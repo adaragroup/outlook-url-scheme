@@ -18,6 +18,14 @@ Page instfiles
 UninstPage uninstConfirm
 UninstPage instfiles
 
+Function .onInit
+  ReadRegStr $OUTLOOKDIR HKLM "SOFTWARE\Microsoft\Office\14.0\Outlook\InstallRoot" "Path"
+    StrCmp $OUTLOOKDIR "" 0 NoAbort
+      MessageBox MB_OK "Microsoft Outlook not found."
+    Abort
+  NoAbort:
+FunctionEnd
+
 Section "OutlookURLScheme (required)"
   SetOutPath $INSTDIR
 
