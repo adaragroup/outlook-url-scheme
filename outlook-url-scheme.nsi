@@ -38,8 +38,8 @@ Section "OutlookURLScheme (required)"
 
   WriteRegStr HKCR "x-outlook" "" "URL:Outlook Open Shell"
   WriteRegStr HKCR "x-outlook" "URL Protocol" ""
-  WriteRegStr HKCR "x-outlook\DefaultIcon" "" "C:\Windows\notepad.exe,1"
-  WriteRegStr HKCR "x-outlook\shell\open\command" "" '"C:\Windows\notepad.exe"'
+  WriteRegStr HKCR "x-outlook\DefaultIcon" "" "$OUTLOOKDIR\OUTLOOK.EXE,-9403"
+  WriteRegStr HKCR "x-outlook\shell\open\command" "" '"$OUTLOOKDIR\OUTLOOK.EXE"'
 
   WriteUninstaller "uninstall.exe"
 SectionEnd
