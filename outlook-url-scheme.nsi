@@ -17,11 +17,12 @@ UninstPage instfiles
 
 Var OUTLOOKDIR
 Function .onInit
+  SetRegView 64
   ReadRegStr $OUTLOOKDIR HKLM "SOFTWARE\Microsoft\Office\14.0\Outlook\InstallRoot" "Path"
-    StrCmp $OUTLOOKDIR "" 0 NoAbort
-      MessageBox MB_OK "Microsoft Outlook not found."
+  SetRegView 32
+  IfErrors 0 +3
+    MessageBox MB_OK "Microsoft Outlook not found."
     Abort
-  NoAbort:
 FunctionEnd
 
 Section "OutlookURLScheme (required)"
@@ -34,10 +35,12 @@ Section "OutlookURLScheme (required)"
   WriteRegDWORD HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OutlookURLScheme" "NoModify" 1
   WriteRegDWORD HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OutlookURLScheme" "NoRepair" 1
 
+  SetRegView 64
   WriteRegStr HKCR "x-outlook" "" "URL:Outlook Open Shell"
   WriteRegStr HKCR "x-outlook" "URL Protocol" ""
   WriteRegStr HKCR "x-outlook\DefaultIcon" "" "$OUTLOOKDIR\OUTLOOK.EXE,-9403"
   WriteRegStr HKCR "x-outlook\shell\open\command" "" '"$OUTLOOKDIR\OUTLOOK.EXE"'
+  SetRegView 32
 
   WriteUninstaller "uninstall.exe"
 SectionEnd
@@ -45,7 +48,10 @@ SectionEnd
 Section "Uninstall"
   Delete $INSTDIR\uninstall.exe
 
+  SetRegView 64
   DeleteRegKey HKCR "x-outlook"
+  SetRegView 32
+
   DeleteRegKey HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OutlookURLScheme"
   DeleteRegKey HKLM "SOFTWARE\OutlookURLScheme"
 
