@@ -1,16 +1,16 @@
 Name "Outlook URL Scheme"
 
-OutFile "outlook-url-scheme_1.0.0.0.exe"
+OutFile "outlook-url-scheme_1.0.1.0.exe"
 
 InstallDir "$PROGRAMFILES\OutlookURLScheme"
 RequestExecutionLevel admin
 InstallDirRegKey HKLM "SOFTWARE\OutlookURLScheme" "Install_Dir"
 
-VIProductVersion "1.0.0.0"
+VIProductVersion "1.0.1.0"
 VIAddVersionKey "ProductName" "Outlook URL Scheme"
 VIAddVersionKey "LegalCopyright" "Outlook URL Scheme"
 VIAddVersionKey "FileDescription" "Outlook URL Scheme"
-VIAddVersionKey "FileVersion" "1.0.0.0"
+VIAddVersionKey "FileVersion" "1.0.1.0"
 
 Page instfiles
 UninstPage instfiles
