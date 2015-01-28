@@ -18,6 +18,8 @@ Page instfiles
 UninstPage uninstConfirm
 UninstPage instfiles
 
+Var OUTLOOKDIR
+
 Function .onInit
   ReadRegStr $OUTLOOKDIR HKLM "SOFTWARE\Microsoft\Office\14.0\Outlook\InstallRoot" "Path"
     StrCmp $OUTLOOKDIR "" 0 NoAbort
