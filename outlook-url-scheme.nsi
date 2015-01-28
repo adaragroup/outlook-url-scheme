@@ -12,14 +12,10 @@ VIAddVersionKey "LegalCopyright" "Outlook URL Scheme"
 VIAddVersionKey "FileDescription" "Outlook URL Scheme"
 VIAddVersionKey "FileVersion" "1.0.0.0"
 
-Page directory
 Page instfiles
-
-UninstPage uninstConfirm
 UninstPage instfiles
 
 Var OUTLOOKDIR
-
 Function .onInit
   ReadRegStr $OUTLOOKDIR HKLM "SOFTWARE\Microsoft\Office\14.0\Outlook\InstallRoot" "Path"
     StrCmp $OUTLOOKDIR "" 0 NoAbort
